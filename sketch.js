@@ -40,15 +40,15 @@ function setup()
 
   g_house = createSprite(380,300,100,100);
   g_house.addImage(g_house_img);
-  g_house.scale = 0.75;
+  g_house.scale = 1;
   //g_house.debug = true;
   g_house.setCollider("circle",-10,0,185)
 
-  pan1 = createSprite(100,height-50,80,80);
+  pan1 = createSprite(80,height-50,80,80);
   pan1.addImage(s_pan);
   pan1.scale = 0.75;
 
-  pan2 = createSprite(width-150,height-50,80,80);
+  pan2 = createSprite(width-130,height-50,80,80);
   pan2.addImage(s_pan);
   pan2.scale = 0.75;
 
@@ -99,7 +99,7 @@ function draw()
     panel2_voltage-=1
   }
 
-  if(power_gen>=4 && temp>=30)
+  if(power_gen>=4 && temp>=30 )
   {
     fan2.changeAnimation('run');
     temp-= 0.5;
@@ -130,17 +130,17 @@ function makeRay()
     raysGroup.setVelocityXEach(vx)
     raysGroup.setLifetimeEach(134)
    }
-  raysGroup.overlap(pan1,explosion1);
-  raysGroup.overlap(pan2,explosion2);
+  raysGroup.overlap(pan1,charge1);
+  raysGroup.overlap(pan2,charge2);
   raysGroup.overlap(g_house,temp_rise)
 }
 
-function explosion1(sprA)
+function charge1(sprA)
 {
    sprA.remove()
    absorbed1+=1;
 }
-function explosion2(sprA)
+function charge2(sprA)
 {
    sprA.remove()
    absorbed2+=1;
